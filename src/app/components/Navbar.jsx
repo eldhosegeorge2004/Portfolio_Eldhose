@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavLink from "./NavLink";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import MenuOverlay from "./MenuOverlay";
@@ -14,13 +14,23 @@ const navLinks = [
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
+  // Close mobile menu on resize to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setNavbarOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 w-full z-50 bg-[#121212] bg-opacity-90 shadow-md">
+    <nav className="fixed top-0 left-0 right-0 w-full z-50 glass transition-all duration-300">
       <div className="flex items-center justify-between px-8 py-4 w-full">
         {/* Logo */}
-        <Link href="/" className="relative inline-block text-4xl font-extrabold text-white">
-
-          <span className="text-cyan-400">E</span>
+        <Link href="/" className="relative inline-block text-4xl font-extrabold text-white tracking-widest hover:scale-105 transition-transform duration-300">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">E</span>
           <span className="text-white">G</span>
         </Link>
 

@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 
@@ -15,8 +16,8 @@ const HeroSection = () => {
           transition={{ duration: 0.5 }}
           className="col-span-7 place-self-center text-center sm:text-left"
         >
-          <h1 className="mb-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4682B4] via-[#4169E1] to-[#00FFFF]">
+          <h1 className="relative mb-4 text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-purple-600 animate-glitch cursor-pointer inline-block">
               Hello, I'm{" "}
             </span>
             <br />
@@ -24,40 +25,48 @@ const HeroSection = () => {
               sequence={[
                 "Eldhose George",
                 1000,
-
                 "Web Developer",
                 1000,
-
                 "Game Developer",
                 1000,
-
                 "Mobile Developer",
                 1000,
-
                 "UI/UX Designer",
                 1000,
               ]}
               wrapper="span"
               speed={20}
               repeat={Infinity}
-              className="text-white font-extrabold "
+              className="text-white font-extrabold"
             />
           </h1>
+
+          {/* Floating Background Shapes */}
+          <div className="absolute top-10 left-0 w-32 h-32 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+          <div className="absolute top-0 right-10 w-32 h-32 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-8 left-20 w-32 h-32 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
           <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
             Driven by curiosity and creativity, I combine technical skills with
             design thinking to deliver meaningful digital experiences that make
             an impact.
           </p>
-          {/*<div className="flex flex-wrap gap-4 justify-center sm:justify-start">
-  <button className="px-6 py-3 rounded-full bg-gradient-to-br from-[#4682B4] via-[#4169E1] to-[#00FFFF] hover:bg-cyan-400 text-white transition-all duration-300 ease-in-out">
-    Hire Me
-  </button>
-  <button className="px-1 py-1 rounded-full bg-gradient-to-br from-[#4682B4] via-[#4169E1] to-[#00FFFF] hover:bg-cyan-600 text-white transition-all duration-300 ease-in-out">
-    <span className="block bg-[#121212] hover:bg-cyan-700 rounded-full px-5 py-2">
-      Download CV
-    </span>
-  </button>
-</div>*/}
+          <div className="flex flex-wrap gap-4 justify-center sm:justify-start mt-8">
+            <Link
+              href="#contact"
+              className="px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-white font-bold shadow-[0_0_20px_rgba(6,182,212,0.5)] hover:shadow-[0_0_30px_rgba(6,182,212,0.8)] transition-all duration-300 transform hover:scale-105"
+            >
+              Hire Me
+            </Link>
+            <a
+              href="/resume.pdf"
+              download="Eldhose_George_Resume.pdf"
+              className="p-[2px] rounded-full bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] transition-all duration-300 transform hover:scale-105 inline-block"
+            >
+              <span className="block bg-[#121212] hover:bg-[#1e1b4b] rounded-full px-7 py-2.5 text-white font-semibold transition-colors duration-300">
+                Download CV
+              </span>
+            </a>
+          </div>
 
         </motion.div>
         {/* Right Section - Hero Image */}
