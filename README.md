@@ -20,19 +20,6 @@
 
 Welcome to the source code of my personal developer portfolio! This site is designed to highlight my skills, display my recent work, and allow potential collaborators or employers to effortlessly reach out to me. Focused heavily on 3D animations and fluid styling, this portfolio aims to provide an immersive layout for visitors.
 
-## 📸 Screenshots
-
-### The Hero Section
-*Fully animated 3D objects rendering beautifully alongside typing effects.*
-![Hero Section](./screenshots/hero.png)
-
-### My Projects Overview
-*A deep dive into some of my most impactful latest builds like the 'RentFlow' ecosystem.*
-![Projects Section](./screenshots/projects.png)
-
-### Projects & Details
-*Cards that seamlessly adapt and scale while you scroll.*
-![Projects List](./screenshots/projects_list.png)
 
 ## 💻 Technologies Used
 
