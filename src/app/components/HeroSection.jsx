@@ -7,108 +7,134 @@ import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    <section>
-      <div className="grid grid-cols-1 sm:grid-cols-12">
-        {/* Left Section */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="col-span-7 place-self-center text-center sm:text-left"
-        >
-          <h1 className="relative mb-4 text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-purple-600 animate-glitch cursor-pointer inline-block">
-              Hello, I'm{" "}
-            </span>
-            <br />
-            <TypeAnimation
-              sequence={[
-                "Eldhose George",
-                1000,
-                "Web Developer",
-                1000,
-                "Game Developer",
-                1000,
-                "Mobile Developer",
-                1000,
-                "UI/UX Designer",
-                1000,
-              ]}
-              wrapper="span"
-              speed={20}
-              repeat={Infinity}
-              className="text-white font-extrabold"
-            />
-          </h1>
+    <section className="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden">
+      {/* Soft Background Gradients */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-magenta/10 rounded-full blur-[150px] animate-pulse-slow pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan/10 rounded-full blur-[120px] animate-blob pointer-events-none"></div>
 
-          {/* Floating Background Shapes */}
-          <div className="absolute top-10 left-0 w-32 h-32 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-          <div className="absolute top-0 right-10 w-32 h-32 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-8 left-20 w-32 h-32 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000"></div>
-          <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl">
-            Driven by curiosity and creativity, I combine technical skills with
-            design thinking to deliver meaningful digital experiences that make
-            an impact.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center sm:justify-start mt-8">
-            <Link
-              href="#contact"
-              className="px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-white font-bold shadow-[0_0_20px_rgba(6,182,212,0.5)] hover:shadow-[0_0_30px_rgba(6,182,212,0.8)] transition-all duration-300 transform hover:scale-105"
-            >
-              Hire Me
-            </Link>
-            <a
-              href="/resume.pdf"
-              download="Eldhose_George_Resume.pdf"
-              className="p-[2px] rounded-full bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] transition-all duration-300 transform hover:scale-105 inline-block"
-            >
-              <span className="block bg-[#121212] hover:bg-[#1e1b4b] rounded-full px-7 py-2.5 text-white font-semibold transition-colors duration-300">
-                Download CV
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
+          
+          {/* Left Section - Text Content */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="text-center lg:text-left z-20"
+          >
+            <div className="inline-block px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
+              <span className="text-cyan font-mono text-sm tracking-widest uppercase">Welcome to my portfolio</span>
+            </div>
+            
+            <h1 className="font-[family-name:var(--font-syne)] text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[1.1] mb-6">
+              <span className="text-white block">Hi, I'm</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-magenta via-electricPurple to-cyan">
+                Eldhose George
               </span>
-            </a>
-          </div>
+            </h1>
+            
+            <div className="h-12 sm:h-16 mb-6">
+              <TypeAnimation
+                sequence={[
+                  "UI/UX Designer",
+                  1500,
+                  "Frontend Developer",
+                  1500,
+                  "Digital Creator",
+                  1500,
+                ]}
+                wrapper="h2"
+                speed={50}
+                repeat={Infinity}
+                className="font-[family-name:var(--font-syne)] text-2xl sm:text-3xl lg:text-4xl font-bold text-white/80"
+              />
+            </div>
 
-        </motion.div>
-        {/* Right Section - Hero Image */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="col-span-5 place-self-center mt-4 lg:mt-0"
-        >
-          <div className="pt-10 flex justify-center">
-            <div className="relative w-[220px] h-[220px] lg:w-[420px] lg:h-[420px] group transition-transform duration-700 ease-in-out hover:scale-105 hover:rotate-[0.5deg]">
+            <p className="text-slate-400 text-lg sm:text-xl font-light mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              I create digital products that combine thoughtful design, modern technology, and exceptional user experiences. My focus is on building solutions that are not only functional and scalable but also intuitive and visually engaging.
+            </p>
 
-              {/* Pulsing Gradient Halo (Outer Glow) */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400 via-blue-600 to-indigo-700 opacity-30 blur-2xl scale-110 animate-pulse-slow" />
+            <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
+              <a
+                href="https://cal.com/eldhose-george-e76cdg"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative px-8 py-4 rounded-2xl bg-gradient-to-r from-magenta to-electricPurple text-white font-bold tracking-widest uppercase shadow-lg shadow-magenta/20 hover:shadow-magenta/40 transition-all duration-300 hover:-translate-y-1"
+              >
+                <span className="relative z-10 flex items-center justify-center gap-2">
+                  Schedule Meeting
+                  <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                </span>
+              </a>
+              <a
+                href="/resume.pdf"
+                download="Eldhose_George_Resume.pdf"
+                className="group px-8 py-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm text-white font-bold tracking-widest uppercase hover:bg-white/10 hover:border-cyan/50 hover:text-cyan transition-all duration-300"
+              >
+                Download CV
+              </a>
+            </div>
+          </motion.div>
 
-              {/* Gradient Border Ring with Subtle Glow */}
-              <div className="absolute inset-[6px] lg:inset-[12px] rounded-full bg-gradient-to-br from-blue-900/40 via-sky-500/10 to-transparent backdrop-blur-lg border-[3px] lg:border-[5px] border-white/10 shadow-[0_0_30px_rgba(0,255,255,0.1)] group-hover:shadow-[0_0_50px_rgba(0,255,255,0.25)] transition-all duration-700 ease-in-out" />
+          {/* Right Section - Glassmorphic Hero Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.2, delay: 0.2 }}
+            className="relative flex justify-center lg:justify-end z-10 w-full"
+          >
+            <div className="relative w-full max-w-[400px] xl:max-w-[500px] aspect-[3/4]">
+              
+              {/* Floating Element 1 - Top Left */}
+              <motion.div 
+                animate={{ y: [-10, 10, -10] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-6 -left-2 md:-left-8 z-30 bg-obsidian/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-2xl flex items-center gap-4"
+              >
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan to-electricPurple flex items-center justify-center">
+                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                </div>
+                <div>
+                  <p className="text-white font-bold font-mono">Full Stack</p>
+                  <p className="text-slate-400 text-xs tracking-wider">ENGINEERING</p>
+                </div>
+              </motion.div>
 
-              {/* Soft Background Blur Ring */}
-              <div className="absolute inset-6 lg:inset-10 rounded-full bg-gradient-to-tr from-slate-900/80 to-slate-800/60 blur-sm" />
+              {/* Floating Element 2 - Bottom Right */}
+              <motion.div 
+                animate={{ y: [10, -10, 10] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute -bottom-6 -right-2 md:-right-4 z-30 bg-obsidian/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-2xl flex items-center gap-4"
+              >
+                <div>
+                  <p className="text-white font-bold font-mono text-right">UI/UX</p>
+                  <p className="text-slate-400 text-xs tracking-wider text-right">DESIGN</p>
+                </div>
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-magenta to-electricPurple flex items-center justify-center">
+                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>
+                </div>
+              </motion.div>
 
-              {/* Profile Image */}
-              <div className="relative z-10 w-full h-full rounded-full overflow-hidden ring-1 ring-white/10 shadow-lg shadow-black/30 group-hover:shadow-xl">
+              {/* Main Image Container */}
+              <div className="relative w-full h-full rounded-[2rem] overflow-hidden bg-obsidian/40 border border-white/10 backdrop-blur-md shadow-2xl group">
+                <div className="absolute inset-0 bg-gradient-to-tr from-magenta/20 via-transparent to-cyan/20 opacity-50 mix-blend-overlay"></div>
+                
                 <Image
-                  src="/images/h.png"
-                  alt="Profile Picture"
-                  className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-105 select-none pointer-events-none"
-                  width={600}
-                  height={100}
+                  src="/images/avatar.jpg"
+                  alt="Eldhose George"
+                  className="object-cover object-center w-full h-full filter contrast-110 saturate-100 group-hover:scale-105 transition-transform duration-700"
+                  fill
                   priority
-                  draggable="false"
-                  onContextMenu={(e) => e.preventDefault()}
                 />
-
               </div>
 
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );
 };
 
-export default HeroSection; 
+export default HeroSection;

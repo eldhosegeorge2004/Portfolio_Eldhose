@@ -25,10 +25,12 @@ const EmailSection = () => {
 
     try {
       const result = await emailjs.sendForm(
-        "service_uc8w0ec",        // ✅ Your EmailJS service ID
-        "template_h281pu6",       // ✅ Your EmailJS template ID
+        "service_uc8w0ec",
+        "template_h281pu6",
         formRef.current,
-        "HohwLYt8RIkUe4ONq"       // ✅ Your EmailJS public key
+        {
+          publicKey: "HohwLYt8RIkUe4ONq",
+        }
       );
 
       console.log("✅ Email sent:", result.text);
@@ -37,19 +39,18 @@ const EmailSection = () => {
       formRef.current.reset();
     } catch (error) {
       console.error("❌ EmailJS Error:", error);
-      setErrorMessage("Something went wrong while sending the email.");
+      setErrorMessage(error.text || "Something went wrong while sending the email. Please try again.");
     }
   };
 
   return (
     <section id="contact" className="grid md:grid-cols-2 my-12 py-24 gap-12 relative scroll-mt-24">
-      <div className="bg-gradient-to-r from-purple-900 to-transparent rounded-full h-80 w-80 z-0 blur-lg absolute top-3/4 -left-4 transform -translate-x-1/2 -translate-1/2 opacity-20"></div>
+      <div className="bg-magenta rounded-full h-80 w-80 z-0 blur-[150px] absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/2 opacity-20 pointer-events-none"></div>
 
-      <div className="z-10">
-        <h5 className="text-2xl font-bold text-white my-2">Let's Connect</h5>
+      <div className="z-10 flex flex-col justify-center">
+        <h5 className="font-[family-name:var(--font-syne)] text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-magenta to-electricPurple mb-6">Let's Connect</h5>
         <p className="text-[#ADB7BE] mb-6 max-w-md text-lg leading-relaxed">
-          I'm currently looking for new opportunities. My inbox is always open. Whether you have a
-          question or just want to say hi, I'll try my best to get back to you!
+          I'm currently open to freelance projects, collaborations, and new opportunities. If you have an idea you'd like to discuss or simply want to connect, I'd love to hear from you.
         </p>
 
         <div className="flex flex-col gap-4 mt-8">
@@ -74,19 +75,20 @@ const EmailSection = () => {
         </div>
       </div>
 
-      <div className="z-10 bg-[#181818]/50 p-8 rounded-2xl border border-white/5 backdrop-blur-sm shadow-xl relative overflow-hidden group">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+      <div className="z-10 bg-obsidian/50 p-8 border border-white/5 backdrop-blur-md relative overflow-hidden group">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan via-electricPurple to-magenta transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
 
-        <form ref={formRef} onSubmit={sendEmail} className="flex flex-col gap-6">
+        <form ref={formRef} onSubmit={sendEmail} className="flex flex-col gap-8">
           <div className="relative">
             <input
               type="email"
               name="user_email"
+              id="user_email"
               required
-              className="peer bg-[#121212] border-b-2 border-[#33353F] text-gray-100 text-sm rounded-t-lg block w-full px-4 pt-6 pb-2 placeholder-transparent focus:outline-none focus:border-cyan-500 transition-colors"
+              className="peer bg-transparent border-b border-white/20 text-white text-lg block w-full px-0 py-2 placeholder-transparent focus:outline-none focus:border-cyan transition-colors"
               placeholder="jacob@gmail.com"
             />
-            <label htmlFor="user_email" className="absolute left-4 top-2 text-gray-400 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:top-2 peer-focus:text-xs peer-focus:text-cyan-500">
+            <label htmlFor="user_email" className="absolute left-0 -top-5 text-slate-500 text-sm transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-cyan">
               Your Email
             </label>
           </div>
@@ -95,11 +97,12 @@ const EmailSection = () => {
             <input
               type="text"
               name="subject"
+              id="subject"
               required
-              className="peer bg-[#121212] border-b-2 border-[#33353F] text-gray-100 text-sm rounded-t-lg block w-full px-4 pt-6 pb-2 placeholder-transparent focus:outline-none focus:border-cyan-500 transition-colors"
+              className="peer bg-transparent border-b border-white/20 text-white text-lg block w-full px-0 py-2 placeholder-transparent focus:outline-none focus:border-cyan transition-colors"
               placeholder="Just saying hi"
             />
-            <label htmlFor="subject" className="absolute left-4 top-2 text-gray-400 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:top-2 peer-focus:text-xs peer-focus:text-cyan-500">
+            <label htmlFor="subject" className="absolute left-0 -top-5 text-slate-500 text-sm transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-cyan">
               Subject
             </label>
           </div>
@@ -107,22 +110,23 @@ const EmailSection = () => {
           <div className="relative">
             <textarea
               name="message"
+              id="message"
               required
               rows="4"
-              className="peer bg-[#121212] border-b-2 border-[#33353F] text-gray-100 text-sm rounded-t-lg block w-full px-4 pt-6 pb-2 placeholder-transparent focus:outline-none focus:border-cyan-500 transition-colors resize-none"
+              className="peer bg-transparent border-b border-white/20 text-white text-lg block w-full px-0 py-2 placeholder-transparent focus:outline-none focus:border-cyan transition-colors resize-none"
               placeholder="Let's talk about..."
             />
-            <label htmlFor="message" className="absolute left-4 top-2 text-gray-400 text-xs transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:top-2 peer-focus:text-xs peer-focus:text-cyan-500">
+            <label htmlFor="message" className="absolute left-0 -top-5 text-slate-500 text-sm transition-all peer-placeholder-shown:text-lg peer-placeholder-shown:top-2 peer-focus:-top-5 peer-focus:text-sm peer-focus:text-cyan">
               Message
             </label>
           </div>
 
           <button
             type="submit"
-            className="group relative w-full overflow-hidden rounded-lg bg-[#121212] p-3 text-center"
+            className="group relative w-full overflow-hidden bg-transparent border border-white/20 p-4 text-center mt-4 transition-colors hover:border-magenta"
           >
-            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 opacity-80 group-hover:opacity-100 transition-opacity"></div>
-            <span className="relative text-white font-bold tracking-wider group-hover:scale-105 transition-transform inline-block">
+            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-magenta to-electricPurple opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
+            <span className="relative z-10 text-white font-bold tracking-widest uppercase transition-transform inline-block group-hover:scale-105 duration-300">
               Send Message
             </span>
           </button>

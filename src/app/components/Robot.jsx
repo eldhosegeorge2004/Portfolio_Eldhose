@@ -6,7 +6,14 @@ const Robot = () => {
     const [pupilPos, setPupilPos] = useState({ x: 0, y: 0 });
     const [isBlinking, setIsBlinking] = useState(false);
     const [isActive, setIsActive] = useState(false); // Click state
+    const [isShaking, setIsShaking] = useState(false);
     const containerRef = useRef(null);
+
+    const handleClick = () => {
+        setIsActive(!isActive);
+        setIsShaking(true);
+        setTimeout(() => setIsShaking(false), 300);
+    };
 
     // Spring physics for smooth head movement
     const mouseX = useSpring(0, { stiffness: 50, damping: 20 });
@@ -60,7 +67,7 @@ const Robot = () => {
         <div
             ref={containerRef}
             className="w-full h-full flex items-center justify-center relative min-h-[400px] cursor-pointer perspective-1000"
-            onClick={() => setIsActive(!isActive)}
+            onClick={handleClick}
         >
 
             {/* Background Orbitals */}
@@ -86,9 +93,13 @@ const Robot = () => {
             {/* Floating Animation Wrapper with 3D Tilt */}
             <motion.div
                 style={{ rotateX, rotateY, perspective: 1000 }}
-                animate={{ y: [-15, 5, -15] }}
+                animate={{ 
+                    y: [-15, 5, -15],
+                    x: isShaking ? [-10, 10, -10, 10, -5, 5, 0] : 0 
+                }}
                 transition={{
-                    y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+                    y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+                    x: isShaking ? { duration: 0.3 } : { duration: 0 }
                 }}
                 className="relative z-10 will-change-transform"
                 whileTap={{ scale: 0.95 }}
@@ -133,7 +144,7 @@ const Robot = () => {
                             transition={{ duration: 0.1 }}
                         >
                             <motion.div
-                                className={`w-6 h-6 md:w-10 md:h-10 rounded-full relative z-10 box-decoration-clone ${isActive ? "bg-red-500 shadow-[0_0_30px_#ef4444]" : "bg-cyan-500 shadow-[0_0_20px_#06b6d4]"}`}
+                                className={`w-6 h-6 md:w-10 md:h-10 rounded-full relative z-10 box-decoration-clone ${isActive ? "bg-red-500 shadow-[0_0_30px_#ef4444]" : "bg-orange-500 shadow-[0_0_20px_#f97316]"}`}
                                 animate={{ x: pupilPos.x * 2.5, y: pupilPos.y * 2.5 }}
                                 transition={{ type: "spring", stiffness: 150, damping: 15 }}
                             >
@@ -149,7 +160,7 @@ const Robot = () => {
                             transition={{ duration: 0.1 }}
                         >
                             <motion.div
-                                className={`w-6 h-6 md:w-10 md:h-10 rounded-full relative z-10 box-decoration-clone ${isActive ? "bg-red-500 shadow-[0_0_30px_#ef4444]" : "bg-cyan-500 shadow-[0_0_20px_#06b6d4]"}`}
+                                className={`w-6 h-6 md:w-10 md:h-10 rounded-full relative z-10 box-decoration-clone ${isActive ? "bg-red-500 shadow-[0_0_30px_#ef4444]" : "bg-orange-500 shadow-[0_0_20px_#f97316]"}`}
                                 animate={{ x: pupilPos.x * 2.5, y: pupilPos.y * 2.5 }}
                                 transition={{ type: "spring", stiffness: 150, damping: 15 }}
                             >

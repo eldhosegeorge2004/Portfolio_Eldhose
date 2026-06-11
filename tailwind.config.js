@@ -17,7 +17,20 @@ module.exports = {
       colors: {
         primary: colors.cyan,
         secondary: colors.purple,
+        obsidian: '#120A1F', // Midnight Violet
+        magenta: '#FF5E5B', // Hot Coral
+        cyan: '#00E5FF',    // Bright Teal
+        electricPurple: '#FFC107', // Golden Yellow
       },
+      animation: {
+        'marquee': 'marquee 25s linear infinite',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        }
+      }
     },
   },
   plugins: [],

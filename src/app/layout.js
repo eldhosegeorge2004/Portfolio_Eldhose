@@ -1,22 +1,30 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Inter, Syne } from 'next/font/google'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import { SystemProvider } from './context/SystemContext'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const syne = Syne({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'], variable: '--font-syne' })
 
 export const metadata = {
     title: 'Portfolio | Eldhose George',
     description: 'Personal Portfolio Website',
 }
 
+export const viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+}
+
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body className={inter.className} suppressHydrationWarning={true}>
+            <body className={`${inter.variable} ${syne.variable} font-sans bg-obsidian text-slate-300 antialiased`} suppressHydrationWarning={true}>
                 <SystemProvider>
-                    <main className="flex min-h-screen flex-col bg-[#121212]">
+                    <main className="flex min-h-screen flex-col selection:bg-cyan/30 selection:text-white">
                         <Navbar />
                         {children}
                         <Footer />
