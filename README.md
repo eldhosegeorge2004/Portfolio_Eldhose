@@ -4,11 +4,10 @@
   <br>
 </h1>
 
-<h4 align="center">A high-performance modern portfolio built using Next.js, Three.js, and Framer Motion.</h4>
+<h4 align="center">A high-performance modern portfolio built using Next.js 15, Three.js, and Framer Motion.</h4>
 
 <p align="center">
   <a href="#about">About</a> •
-  <a href="#screenshots">Screenshots</a> •
   <a href="#technologies-used">Technologies Used</a> •
   <a href="#features">Features</a> •
   <a href="#getting-started">Getting Started</a>
@@ -18,25 +17,26 @@
 
 ## 🌟 About
 
-Welcome to the source code of my personal developer portfolio! This site is designed to highlight my skills, display my recent work, and allow potential collaborators or employers to effortlessly reach out to me. Focused heavily on 3D animations and fluid styling, this portfolio aims to provide an immersive layout for visitors.
-
+Welcome to the source code of my personal developer portfolio! This site is designed to highlight my skills as a Full Stack Engineer and UI/UX Designer. It features a custom "Cyberpunk Neo-Brutalism" aesthetic with glassmorphism, dedicated case study pages, and seamless integrations for scheduling and communication. 
 
 ## 💻 Technologies Used
 
 This project harnesses the power of modern web technologies to create a seamlessly integrated and performant experience:
 
-- **Next.js 15 (Turbopack):** Core React architecture and routing.
-- **Three.js & React Three Fiber/Drei:** Rendering rich, interactive 3D assets directly in the browser.
-- **Tailwind CSS:** Fully responsive, utility-first styling for rapid UI development.
-- **Framer Motion:** Powerful production-ready animations.
-- **React Type Animation / Animated Numbers:** For engaging micro-interactions on the frontend.
-- **EmailJS / Resend:** Ensuring emails are securely formatted and dispatched right from the browser.
+- **Next.js 15 (App Router):** Core React architecture, server-side rendering, and routing.
+- **Three.js & React Three Fiber:** Rendering rich, interactive 3D assets directly in the browser.
+- **Tailwind CSS v4:** Fully responsive, utility-first styling with custom CSS variables and keyframe animations.
+- **Framer Motion:** Powerful production-ready scroll and hover animations.
+- **Cal.com:** Embedded scheduling and booking links for instant freelance availability.
+- **EmailJS:** Ensuring emails are securely formatted and dispatched right from the browser.
 
 ## ✨ Features
 
 - **Interactive 3D Elements:** Engaging hero section leveraging `three.js`.
-- **High-Performance Animations:** Smooth scrolling dynamics with zero layout shifts.
-- **Project Showcase Library:** A completely responsive grid to detail past case studies.
+- **Dynamic Case Studies:** Dedicated routing and detailed breakdowns for major projects like RentFlow and Smart Tic Tac Toe.
+- **High-Performance Animations:** Smooth scrolling dynamics, floating badges, and glowing SVG geometry.
+- **Meeting Scheduler:** Integrated Cal.com routing to easily book 15min/30min discovery calls.
+- **Content Protection:** Custom CSS anti-copying rules (disabled text selection, image dragging, and mobile callouts) for a native-app feel.
 - **Interactive Contact Form:** Instant message delivery integration directly to my inbox.
 - **Optimized Assets:** Extremely fast render times facilitated by Next.js edge caching and Image optimization.
 - **Fully Responsive:** Beautifully adapts from standard ultra-wide monitors down to standard smartphone screens.
