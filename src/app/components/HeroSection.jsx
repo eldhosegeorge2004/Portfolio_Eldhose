@@ -73,6 +73,7 @@ const HeroSection = () => {
               >
                 Download CV
               </a>
+
             </div>
           </motion.div>
 

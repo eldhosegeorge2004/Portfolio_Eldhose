@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
         <html lang="en">
             <body className={`${inter.variable} ${syne.variable} font-sans bg-obsidian text-slate-300 antialiased`} suppressHydrationWarning={true}>
                 <SystemProvider>
-                    <main className="flex min-h-screen flex-col selection:bg-cyan/30 selection:text-white">
+                    <main className="flex min-h-screen flex-col selection:bg-cyan/30 selection:text-white overflow-hidden w-full">
                         <Navbar />
                         {children}
                         <Footer />

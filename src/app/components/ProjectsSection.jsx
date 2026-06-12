@@ -50,7 +50,7 @@ const ProjectsSection = () => {
           Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan to-magenta">Projects</span>
         </h2>
 
-        <div className="text-white flex flex-row justify-center items-center gap-4 py-6 mb-8">
+        <div className="text-white flex flex-row flex-wrap justify-center items-center gap-2 md:gap-4 py-6 mb-8">
           <ProjectTag onClick={handleTagChange} name="All" isSelected={tag === "All"} />
           <ProjectTag onClick={handleTagChange} name="Web" isSelected={tag === "Web"} />
           <ProjectTag onClick={handleTagChange} name="Mobile" isSelected={tag === "Mobile"} />
