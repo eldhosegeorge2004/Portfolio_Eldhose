@@ -7,7 +7,15 @@ const Robot = () => {
     const [isBlinking, setIsBlinking] = useState(false);
     const [isActive, setIsActive] = useState(false); // Click state
     const [isShaking, setIsShaking] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
     const containerRef = useRef(null);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
 
     const handleClick = () => {
         setIsActive(!isActive);
@@ -94,12 +102,12 @@ const Robot = () => {
             <motion.div
                 style={{ rotateX, rotateY, perspective: 1000 }}
                 animate={{ 
-                    y: [-15, 5, -15],
-                    x: isShaking ? [-10, 10, -10, 10, -5, 5, 0] : 0 
+                    y: isMobile ? 0 : [-15, 5, -15],
+                    x: (isShaking && !isMobile) ? [-10, 10, -10, 10, -5, 5, 0] : 0 
                 }}
                 transition={{
                     y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
-                    x: isShaking ? { duration: 0.3 } : { duration: 0 }
+                    x: (isShaking && !isMobile) ? { duration: 0.3 } : { duration: 0 }
                 }}
                 className="relative z-10 will-change-transform"
                 whileTap={{ scale: 0.95 }}
