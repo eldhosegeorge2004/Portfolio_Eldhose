@@ -39,7 +39,7 @@ const TAB_DATA = [
     title: "Education",
     id: "education",
     content: (
-      <ul className="space-y-8 pl-4 relative before:absolute before:inset-0 before:ml-[11px] before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-cyan before:via-magenta before:to-transparent">
+      <ul className="space-y-8 relative before:absolute before:left-[7px] before:top-0 before:h-full before:w-[2px] before:bg-gradient-to-b before:from-cyan before:via-magenta before:to-transparent">
         {[
           {
             title: "B.Tech in Computer Science & Design (Minor in ECE)",
@@ -63,9 +63,9 @@ const TAB_DATA = [
             color: "text-electricPurple"
           }
         ].map((edu, index) => (
-          <li key={index} className="relative pl-8">
+          <li key={index} className="relative pl-8 sm:pl-10">
             {/* Timeline Dot */}
-            <div className={`absolute left-[-24px] top-1 h-4 w-4 rounded-full border-2 border-obsidian bg-${edu.color.replace('text-', '')} shadow-[0_0_10px_currentColor] z-10 ${edu.color}`}></div>
+            <div className={`absolute left-0 top-2 h-4 w-4 rounded-full border-2 border-obsidian bg-${edu.color.replace('text-', '')} shadow-[0_0_10px_currentColor] z-10 ${edu.color}`}></div>
             
             <div className="bg-obsidian/60 backdrop-blur-lg p-6 border-l-2 border-transparent hover:border-l-magenta hover:bg-white/5 transition-all duration-300 group">
               <h3 className="font-[family-name:var(--font-syne)] font-bold text-xl text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-magenta group-hover:to-cyan transition-all w-fit mb-2">
