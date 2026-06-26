@@ -23,6 +23,15 @@ const projectsData = [
     previewUrl: "https://tictactoe-neon-omega.vercel.app",
     caseStudyUrl: "/projects/tictactoe",
   },
+  {
+    id: 3,
+    title: "PlacementHub",
+    description: "An AI-powered, modular Single Page Application designed to help students prepare for technical careers with mock interviews, dynamic quizzes, and personalized roadmaps at zero server cost.",
+    image: "/images/projects/placementhub.png",
+    tag: ["All", "Web", "Mobile"],
+    previewUrl: "https://placementhub-o867.vercel.app/",
+    caseStudyUrl: "/projects/placementhub",
+  }
 ];
 
 const ProjectsSection = () => {

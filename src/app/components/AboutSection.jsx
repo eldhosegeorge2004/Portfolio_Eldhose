@@ -39,52 +39,40 @@ const TAB_DATA = [
     title: "Education",
     id: "education",
     content: (
-      <div className="relative ml-3 md:ml-4 space-y-8 pb-4">
-        {/* Elegant Drawing Line */}
-        <motion.div 
-           className="absolute top-6 left-0 w-[2px] bg-gradient-to-b from-cyan via-magenta to-electricPurple/30"
-           initial={{ height: 0 }}
-           whileInView={{ height: "100%" }}
-           transition={{ duration: 1.5, ease: "easeOut" }}
-           viewport={{ once: true }}
-        />
-
+      <ul className="space-y-8 pl-4 relative before:absolute before:inset-0 before:ml-[11px] before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-cyan before:via-magenta before:to-transparent">
         {[
           {
             title: "B.Tech in Computer Science & Design (Minor in ECE)",
             place: "Viswajyothi College of Engineering & Technology, Vazhakkulam",
             year: "2022 - Present",
             grade: "CGPA: 7.86",
-            color: "text-cyan",
-            bgColor: "bg-cyan"
+            color: "text-cyan"
           },
           {
             title: "Higher Secondary Education",
             place: "Govt. Higher Secondary School, Pezhakkappilly",
             year: "2020 - 2022",
             grade: "93.4%",
-            color: "text-magenta",
-            bgColor: "bg-magenta"
+            color: "text-magenta"
           },
           {
             title: "SSLC",
             place: "Nirmala Higher Secondary School, Muvattupuzha",
             year: "2019 - 2020",
             grade: "98%",
-            color: "text-electricPurple",
-            bgColor: "bg-electricPurple"
+            color: "text-electricPurple"
           }
         ].map((edu, index) => (
-          <div key={index} className="relative pl-8 md:pl-10">
+          <li key={index} className="relative pl-8">
             {/* Timeline Dot */}
-            <div className={`absolute left-[-7px] top-6 h-4 w-4 rounded-full ${edu.bgColor} shadow-[0_0_10px_currentColor] z-10 ${edu.color}`}></div>
+            <div className={`absolute left-[-24px] top-1 h-4 w-4 rounded-full border-2 border-obsidian bg-${edu.color.replace('text-', '')} shadow-[0_0_10px_currentColor] z-10 ${edu.color}`}></div>
             
-            <div className="bg-obsidian/60 backdrop-blur-lg p-6 border-l-2 border-white/5 hover:border-l-magenta hover:bg-white/5 transition-all duration-300 group">
-              <h3 className="font-[family-name:var(--font-syne)] font-bold text-xl text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-magenta group-hover:to-cyan transition-all mb-2">
+            <div className="bg-obsidian/60 backdrop-blur-lg p-6 border-l-2 border-transparent hover:border-l-magenta hover:bg-white/5 transition-all duration-300 group">
+              <h3 className="font-[family-name:var(--font-syne)] font-bold text-xl text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-magenta group-hover:to-cyan transition-all w-fit mb-2">
                 {edu.title}
               </h3>
               <div className="flex items-center gap-2 text-sm text-slate-400 mb-4">
-                <BuildingLibraryIcon className="w-4 h-4 min-w-[16px]" />
+                <BuildingLibraryIcon className="w-4 h-4" />
                 <span>{edu.place}</span>
               </div>
               <div className="flex justify-between items-center border-t border-white/10 pt-4">
@@ -92,9 +80,9 @@ const TAB_DATA = [
                 <span className={`text-sm font-black ${edu.color}`}>{edu.grade}</span>
               </div>
             </div>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     ),
   },
 ];

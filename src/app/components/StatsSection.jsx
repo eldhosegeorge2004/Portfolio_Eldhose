@@ -1,54 +1,56 @@
 "use client";
-import React from "react";
-import dynamic from "next/dynamic";
+import React, { useEffect, useRef } from "react";
 import { DocumentTextIcon, UserGroupIcon, ClockIcon, TrophyIcon } from "@heroicons/react/24/outline";
+import { motion, useMotionValue, useTransform, animate, useInView } from "framer-motion";
 
-// Dynamically import react-animated-numbers to avoid SSR issues
-const AnimatedNumbers = dynamic(
-  () => {
-    return import("react-animated-numbers");
-  },
-  { ssr: false }
-);
+const AnimatedNumber = ({ value }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const count = useMotionValue(0);
+  
+  const rounded = useTransform(count, (latest) => 
+    value % 1 !== 0 ? latest.toFixed(2) : Math.round(latest)
+  );
+
+  useEffect(() => {
+    if (isInView) {
+      animate(count, value, { duration: 2, ease: "easeOut" });
+    }
+  }, [isInView, value, count]);
+
+  return <motion.span ref={ref}>{rounded}</motion.span>;
+};
 
 const statsList = [
   {
     metric: "Projects Built",
-    value: "15",
+    value: 15,
     postfix: "+",
     icon: <DocumentTextIcon className="w-8 h-8" />,
     color: "cyan"
   },
   {
     metric: "Technologies",
-    value: "12",
+    value: 12,
     postfix: "+",
     icon: <UserGroupIcon className="w-8 h-8" />,
     color: "magenta"
   },
   {
     metric: "CGPA Score",
-    value: "7.86",
+    value: 7.86,
     postfix: "",
     icon: <ClockIcon className="w-8 h-8" />,
     color: "electricPurple"
   },
   {
     metric: "Hackathons",
-    value: "3",
+    value: 3,
     postfix: "+",
     icon: <TrophyIcon className="w-8 h-8" />,
     color: "cyan"
   },
 ];
-
-const animationConfigs = (_, index) => {
-  return {
-    mass: 1,
-    friction: 100,
-    tensions: 140 * (index + 1),
-  };
-};
 
 const StatsSection = () => {
   return (
@@ -65,13 +67,8 @@ const StatsSection = () => {
                   {stat.icon}
                 </div>
                 <h2 className="text-white text-4xl xl:text-5xl font-black font-[family-name:var(--font-syne)] flex flex-row items-center mb-2">
-                  <AnimatedNumbers
-                    includeComma
-                    animateToNumber={parseFloat(stat.value)}
-                    locale="en-US"
-                    className="text-white"
-                  />
-                  {stat.postfix && <span className={`text-${stat.color}`}>{stat.postfix}</span>}
+                  <AnimatedNumber value={stat.value} />
+                  {stat.postfix && <span className={`text-${stat.color} ml-1`}>{stat.postfix}</span>}
                 </h2>
                 <p className="text-slate-400 text-sm font-mono tracking-widest uppercase text-center mt-2 group-hover:text-white transition-colors duration-300">
                   {stat.metric}
